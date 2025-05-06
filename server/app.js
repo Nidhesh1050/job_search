@@ -56,7 +56,7 @@ app.get('/jobs', async (req, res) => {
 
 
 // Database connection
-mongoose.connect('mongodb://localhost:27017/jobPortal')
+mongoose.connect('mongodb+srv://nidheshnigam1050:O1vjdphyRFOSNgF2@cluster0.tpnudxi.mongodb.net/jobPortal')
 .then(() => {
     console.log('Connected to MongoDB');
 })
