@@ -7,6 +7,7 @@ const App = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [filters, setFilters] = useState({
     title: '',
+    company:'',
     location: '',
     employment_type: '',
     source: '',
@@ -36,7 +37,7 @@ const App = () => {
         <input type="text" name="employment_type" placeholder="Employment type" value={filters.employment_type} onChange={handleSearchChange} />
         <input type="text" name="source" placeholder="Source" value={filters.source} onChange={handleSearchChange} />
         <input type="number" name="min_exp" placeholder="Min Exp" value={filters.min_exp} onChange={handleSearchChange} />
-        <input type="number" name="max_exp" placeholder="Max Exp" value={filters.max_exp} onChange={handleSearchChange} />
+        {/* <input type="number" name="max_exp" placeholder="Max Exp" value={filters.max_exp} onChange={handleSearchChange} /> */}
       </div>
 
       <div className="main-content">
@@ -55,11 +56,14 @@ const App = () => {
             <>
               <h2>{selectedJob.title}</h2>
               <p><strong>Location:</strong> {selectedJob.location}</p>
+              <p><strong>Company:</strong> {selectedJob.company}</p>
               <p><strong>Employment Type:</strong> {selectedJob.employment_type}</p>
               <p><strong>Posted:</strong> {new Date(selectedJob.postedDateTime).toLocaleDateString()}</p>
               <p><strong>Source:</strong> {selectedJob.source}</p>
               <p><strong>Experience:</strong> {selectedJob.min_exp} - {selectedJob.max_exp} years</p>
-              <p><strong>Description:</strong> {selectedJob.description || "No description provided."}</p>
+              {/* <p><strong>Description:</strong> {selectedJob.description || "No description provided."}</p> */}
+              <p><strong>Country:</strong> {selectedJob.country}</p>
+              <button>Apply now</button>
             </>
           ) : (
             <p>Select a job to view details</p>
