@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Job = require('../model');
 const jobsRaw = require('../data/Mployee.me Task Data.json');
 
-mongoose.connect('mongodb+srv://nidheshnigam1050:O1vjdphyRFOSNgF2@cluster0.tpnudxi.mongodb.net/jobPortal')
+mongoose.connect(process.env.MONGO_URI)
   .then(async () => {
     console.log('Connected to MongoDB');
 

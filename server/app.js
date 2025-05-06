@@ -2,12 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const jobModel = require('./model')
+require('dotenv').config();
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-let port = 3001;
 
 
 
@@ -44,7 +44,7 @@ app.get('/jobs', async (req, res) => {
         filter.source = new RegExp(source, 'i');
       }
         
-      const jobs = await jobModel.find(filter);
+      const jobs = await jobModel.find(filter).limit(100);
       res.json(jobs);
     } catch (err) {
       res.status(500).json({ error: 'Error fetching jobs' });
@@ -53,10 +53,10 @@ app.get('/jobs', async (req, res) => {
   
 
   
-
+const PORT = process.env.PORT || 3001;
 
 // Database connection
-mongoose.connect('mongodb+srv://nidheshnigam1050:O1vjdphyRFOSNgF2@cluster0.tpnudxi.mongodb.net/jobPortal')
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log('Connected to MongoDB');
 })
@@ -65,6 +65,6 @@ mongoose.connect('mongodb+srv://nidheshnigam1050:O1vjdphyRFOSNgF2@cluster0.tpnud
 });
 
 // Server start 
-app.listen(port,()=>{
-    console.log(`Server is running on port ${port}`);
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
 })

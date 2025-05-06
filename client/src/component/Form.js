@@ -16,7 +16,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:3001/jobs', { params: filters })
+    axios.get('https://job-search-b3ef.onrender.com/jobs', { params: filters })
       .then(response => setJobs(response.data))
       .catch(error => console.error('Error fetching jobs:', error));
   }, [filters]);
